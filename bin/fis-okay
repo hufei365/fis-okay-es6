@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+var fs = require("fs");
+var fis = require("fis3");
+var Liftoff = require("liftoff");
+var argv = require("minimist")(process.argv.slice(2));
+var path = require("path");
+var cli = new Liftoff({
+	"name": "okay",
+	"processTitle": "okay",
+	"moduleName": "okay",
+	"configName": "okay-conf",
+
+	// only js supported!
+	extensions: {
+		".js": null
+	}
+});
+
+
+// 处理发布时接收的参数, fis限制多余参数, 自己动手吧;
+(function initProcess(fis, argv) {
+	var options = {},
+		allowed = [ 'qiniuAccessKey', 'qiniuSecretKey', 'qiniuBucket', 'domain', 'namespace' ];
+
+	
+	Object.keys(argv).forEach(function( k ) {
+		if ( -1 !== allowed.indexOf(k) ) {
+			options[ k ] = argv[ k ];
+			delete argv[ k ];
+		}
+	});
+	// 定义全局 okay 以留备用;
+	fis.set('okay', options);
+})(fis, argv);
+// 为了节省链接数将编译后生成的 map 默认扔到 require.js 中
+// 但 fis 早已将文件 md5 如此定义为文件未变化, 因此在 require.js 中加入时间戳 (临时方案)
+function changeTimestamp ( configBase ) {
+	var requirePath = path.join(configBase, 'components/lib/require/require.js');
+	if ( fs.existsSync(requirePath) ) {
+        var content = fs.readFileSync(requirePath);
+	    fs.writeFileSync(
+            requirePath, 
+            content.toString('utf8').replace(/require_timestamp\s*=\s*[0-9]+[^\/n]/, function(a, b) {
+		        return a.replace(/[0-9]+/, +new Date());
+	        })
+        );
+    }
+}
+
+
+
+cli.launch({
+	cwd: argv.r || argv.root,
+	configPath: argv.f || argv.file
+}, function(env) {
+	var okay;
+	if (!env.modulePath) {
+		okay = require('../okay.js');
+		env.modulePath = __dirname;
+	} else {
+		okay = require(env.modulePath);
+	}
+
+	/^(online|qa)$/.test(argv._[1]) && changeTimestamp( env.configBase );
+	// okay.set('system.localNPMFolder', path.join(env.cwd, 'node_modules/okay'));
+	// okay.set('system.globalNPMFolder', path.dirname(__dirname));
+	okay.cli.name = this.name;
+	okay.cli.run(argv, env);
+});
