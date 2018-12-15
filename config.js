@@ -30,7 +30,7 @@ fis
 	})
 
 	.match('**.scss', {
-		parser: fis.plugin('scss'),
+		parser: fis.plugin('okayscss'),
 		rExt: '.css'
 	})
 
@@ -39,14 +39,22 @@ fis
 		rExt: '.html'
 	})
 
-	// .match('/views/**.{vm,jsp}', {
-	// 	preprocessor: fis.plugin('extlang'),
-	// 	isHtmlLike: true,
-	// 	release: '/WEB-INF/$0',
-	// 	extras: {
-	// 		isPage: true
-	// 	}
-	// })
+	.match('/(es2015-polyfill/**.js)', {
+		id: '$1'
+		,moduleId: '$1'
+		,parser: require('./lib/babel-parser')
+		,postprocessor: require('./lib/babel-parser').postprocessor
+	})
+	.match('/**.es6', {
+		isMod: true,
+		rExt: '.js',
+		parser: require('./lib/babel-parser')
+		,postprocessor: require('./lib/babel-parser').postprocessor
+	})
+	.match('/**.{vm, html, tpl}:js', {
+		parser: require('./lib/babel-parser')
+		,postprocessor: require('./lib/babel-parser').asyncParser
+	})
 
 	.match('/okay-conf.js', {
 		release: false
