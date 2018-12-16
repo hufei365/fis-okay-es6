@@ -42,7 +42,7 @@ fis
 	.match('/(es2015-polyfill/**.js)', {
 		id: '$1'
 		,moduleId: '$1'
-		,parser: require('./lib/babel-parser')
+		// ,parser: require('./lib/babel-parser') // 一行代码引发了血案
 		,postprocessor: require('./lib/babel-parser').postprocessor
 	})
 	.match('/**.es6', {
@@ -54,6 +54,14 @@ fis
 	.match('/**.{vm, html, tpl}:js', {
 		parser: require('./lib/babel-parser')
 		,postprocessor: require('./lib/babel-parser').asyncParser
+	})
+	.match('::package', {
+		// 合并es6 polyfill
+		packager: fis.plugin('map', {
+			'pkg/es2015-polyfill.js': [
+				'es2015-polyfill/**.js'
+			]
+		})
 	})
 
 	.match('/okay-conf.js', {
