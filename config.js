@@ -30,7 +30,7 @@ fis
 	})
 
 	.match('**.scss', {
-		parser: fis.plugin('okayscss'),
+		parser: fis.plugin('scss'),
 		rExt: '.css'
 	})
 

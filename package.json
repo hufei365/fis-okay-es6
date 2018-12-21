@@ -39,7 +39,7 @@
         "fis3": "3.4.38",
         "fis3-deploy-tar": "*",
         "fis3-hook-commonjs": "*",
-        "fis3-parser-okayscss": "*",
+        "fis3-parser-scss": "*",
         "fis3-postpackager-loader": "^2.0.5",
         "fis3-preprocessor-extlang": "1.1.6",
         "fis3-server-jello": "*",
