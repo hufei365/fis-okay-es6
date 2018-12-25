@@ -6,6 +6,7 @@
 
 fis.set('server.type', 'jello');
 var _okay = fis.get('okay');
+var babelParser = require('fis3-parser-babel-plugin');
 
 fis
 	.match('image', {
@@ -43,17 +44,34 @@ fis
 		id: '$1'
 		,moduleId: '$1'
 		// ,parser: require('./lib/babel-parser') // 一行代码引发了血案
-		,postprocessor: require('./lib/babel-parser').postprocessor
+		,postprocessor: babelParser.postprocessor
 	})
 	.match('/**.es6', {
 		isMod: true,
 		rExt: '.js',
-		parser: require('./lib/babel-parser')
-		,postprocessor: require('./lib/babel-parser').postprocessor
+		parser: require('./lib/babel-parser', {
+			"presets": [
+				["env", {
+				  "targets": {
+					"browsers": ["last 3 versions", "safari >= 7"]
+				  }
+				}]
+			  ]
+		})
+		// parser: fis.plugin('babel-plugin')
+		,postprocessor: babelParser.postprocessor
 	})
 	.match('/**.{vm, html, tpl}:js', {
-		parser: require('./lib/babel-parser')
-		,postprocessor: require('./lib/babel-parser').asyncParser
+		parser: fis.plugin('babel-plugin', {
+			"presets": [
+				["env", {
+				  "targets": {
+					"browsers": ["last 2 versions", "safari >= 7"]
+				  }
+				}]
+			  ]
+		})
+		,postprocessor: babelParser.asyncParser
 	})
 	.match('::package', {
 		// 合并es6 polyfill
