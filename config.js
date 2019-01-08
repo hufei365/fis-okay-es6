@@ -6,6 +6,8 @@
 
 fis.set('server.type', 'jello');
 var _okay = fis.get('okay');
+fis.set('babel_dir', 'es2015-polyfill');
+var babel_dir = fis.get('babel_dir');
 
 fis
 	.match('image', {
@@ -34,34 +36,39 @@ fis
 		rExt: '.css'
 	})
 
-	.match('**.md', {
-		parser: fis.plugin('marked'),
-		rExt: '.html'
-	})
-
-	.match('/(es2015-polyfill/**.js)', {
+	.match('/(' + babel_dir + '/**.js)', {
 		id: '$1'
-		,moduleId: '$1'
-		// ,parser: require('./lib/babel-parser') // 一行代码引发了血案
-		,postprocessor: require('./lib/babel-parser').postprocessor
+		, moduleId: '$1'
+		, postprocessor: require('./lib/babel-parser').postprocessor
 	})
-	.match('/**.es6', {
-		isMod: true,
-		rExt: '.js',
-		parser: require('./lib/babel-parser')
-		,postprocessor: require('./lib/babel-parser').postprocessor
+	.match('/**.js', {
+		// isMod: true,
+		// rExt: '.js',
+		parser: fis.plugin(require('./lib/babel-parser'), {
+			sourceMap: 'inline'
+		})
+		// parser: require('./lib/babel-parser')
+		, postprocessor: require('./lib/babel-parser').postprocessor
 	})
 	.match('/**.{vm, html, tpl}:js', {
-		parser: require('./lib/babel-parser')
-		,postprocessor: require('./lib/babel-parser').asyncParser
+		parser: fis.plugin(require('./lib/babel-parser'), {
+			sourceMap: 'inline'
+		})
+		// parser: require('./lib/babel-parser')
+		, postprocessor: require('./lib/babel-parser').asyncParser
 	})
 	.match('::package', {
 		// 合并es6 polyfill
 		packager: fis.plugin('map', {
-			'pkg/es2015-polyfill.js': [
+			['pkg/es2015-polyfill_'+(+ new Date())+'.js']: [
 				'es2015-polyfill/**.js'
 			]
 		})
+	})
+
+	.match('**.md', {
+		parser: fis.plugin('marked'),
+		rExt: '.html'
 	})
 
 	.match('/okay-conf.js', {
