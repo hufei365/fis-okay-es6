@@ -41,7 +41,7 @@ fis
 		, moduleId: '$1'
 		, postprocessor: require('./lib/babel-parser').postprocessor
 	})
-	.match('/**.js', {
+	.match('/**.es6', {
 		// isMod: true,
 		// rExt: '.js',
 		parser: fis.plugin(require('./lib/babel-parser'), {
