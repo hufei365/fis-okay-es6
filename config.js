@@ -9,6 +9,7 @@ var _okay = fis.get('okay');
 fis.set('babel_dir', 'es2015-polyfill'); // set es6 node_modules 暂存目录
 
 require('./conf/es2015-conf.js'); // 处理es6
+require('./conf/vue-conf.js'); // 处理vue文件
 
 fis
 	.match('image', {
