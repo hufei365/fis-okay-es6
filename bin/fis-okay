@@ -63,8 +63,12 @@ cli.launch({
 	}
 
 	/^(online|qa)$/.test(argv._[1]) && changeTimestamp( env.configBase );
-	// okay.set('system.localNPMFolder', path.join(env.cwd, 'node_modules/okay'));
-	// okay.set('system.globalNPMFolder', path.dirname(__dirname));
+
+	fis.require.paths.unshift(path.join(env.cwd, 'node_modules'));
+	fis.require.paths.push(path.join(path.dirname(__dirname), 'node_modules'));
+	// local plugin 不理解fis只认以node_modules结尾的目录，应该是遵从了npm的加载机制
+	fis.require.paths.unshift(path.join(path.dirname(__dirname), 'local-plugin/node_modules'));  
+
 	okay.cli.name = this.name;
 	okay.cli.run(argv, env);
 });

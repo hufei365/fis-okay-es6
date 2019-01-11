@@ -1,53 +1,57 @@
 {
-    "name": "okay",
-    "version": "0.1.0",
-    "description": "front-end integrated solution for j2ee velocity.",
-    "keywords": [
-        "okay",
-        "fis"
-    ],
-    "homepage": "http://git.okjiaoyu.cn/front-end/fis-okay",
-    "bugs": {
-        "url": "http://git.okjiaoyu.cn/front-end/fis-okay/issues",
-        "email": "nuersir@gmail.com"
-    },
-    "bin": {
-        "okay": "bin/fis-okay",
-        "fis-okay": "bin/fis-okay"
-    },
-    "scripts": {
-        "okay": "node bin/fis-okay"
-    },
-    "license": "MIT",
-    "author": {
-        "name": "nuer",
-        "email": "nuersir@gmail.com",
-        "url": "https://github.com/nuersir"
-    },
-    "main": "okay.js",
-    "repository": {
-        "type": "git",
-        "url": "git@git.okjiaoyu.cn:front-end/fis-okay.git"
-    },
-    "dependencies": {
-        "babel-core": "^6.26.3",
-        "babel-plugin-transform-runtime": "^6.23.0",
-        "babel-preset-env": "^1.7.0",
-        "colors": "0.6.2",
-        "fis-parser-handlebars-x": "*",
-        "fis-parser-marked": "*",
-        "fis3": "3.4.38",
-        "fis3-deploy-tar": "*",
-        "fis3-hook-commonjs": "*",
-        "fis3-parser-scss": "*",
-        "fis3-postpackager-loader": "^2.0.5",
-        "fis3-preprocessor-extlang": "1.1.6",
-        "fis3-server-jello": "*",
-        "liftoff": "2.2.0",
-        "minimist": "1.2.0",
-        "node-pngcrush": "v0.3.4",
-        "node-pngquant-native": "v1.0.2",
-        "resolve": "^1.8.1"
-    },
-    "engines": ">=4.5.0"
+  "name": "okay",
+  "version": "0.1.0",
+  "description": "front-end integrated solution for j2ee velocity.",
+  "keywords": [
+    "okay",
+    "fis"
+  ],
+  "homepage": "http://git.okjiaoyu.cn/front-end/fis-okay",
+  "bugs": {
+    "url": "http://git.okjiaoyu.cn/front-end/fis-okay/issues",
+    "email": "nuersir@gmail.com"
+  },
+  "bin": {
+    "okay": "bin/fis-okay",
+    "fis-okay": "bin/fis-okay"
+  },
+  "scripts": {
+    "okay": "node bin/fis-okay"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "nuer",
+    "email": "nuersir@gmail.com",
+    "url": "https://github.com/nuersir"
+  },
+  "main": "okay.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.okjiaoyu.cn:front-end/fis-okay.git"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.7.0",
+    "colors": "0.6.2",
+    "fis-parser-handlebars-x": "*",
+    "fis-parser-marked": "*",
+    "fis3": "3.4.38",
+    "fis3-deploy-tar": "*",
+    "fis3-hook-commonjs": "*",
+    "fis3-parser-scss": "*",
+    "fis3-postpackager-loader": "^2.0.5",
+    "fis3-preprocessor-extlang": "1.1.6",
+    "fis3-server-jello": "*",
+    "liftoff": "2.2.0",
+    "minimist": "1.2.0",
+    "node-pngcrush": "v0.3.4",
+    "node-pngquant-native": "v1.0.2",
+    "resolve": "^1.8.1",
+    "vue": "^2.5.21"
+  },
+  "engines": ">=4.5.0",
+  "devDependencies": {
+    "babel-preset-vue": "^2.0.2"
+  }
 }

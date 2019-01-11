@@ -6,8 +6,9 @@
 
 fis.set('server.type', 'jello');
 var _okay = fis.get('okay');
-fis.set('babel_dir', 'es2015-polyfill');
-var babel_dir = fis.get('babel_dir');
+fis.set('babel_dir', 'es2015-polyfill'); // set es6 node_modules 暂存目录
+
+require('./conf/es2015-conf.js'); // 处理es6
 
 fis
 	.match('image', {
@@ -34,36 +35,6 @@ fis
 	.match('**.scss', {
 		parser: fis.plugin('scss'),
 		rExt: '.css'
-	})
-
-	.match('/(' + babel_dir + '/**.js)', {
-		id: '$1'
-		, moduleId: '$1'
-		, postprocessor: require('./lib/babel-parser').postprocessor
-	})
-	.match('/**.es6', {
-		// isMod: true,
-		// rExt: '.js',
-		parser: fis.plugin(require('./lib/babel-parser'), {
-			sourceMap: 'inline'
-		})
-		// parser: require('./lib/babel-parser')
-		, postprocessor: require('./lib/babel-parser').postprocessor
-	})
-	.match('/**.{vm, html, tpl}:js', {
-		parser: fis.plugin(require('./lib/babel-parser'), {
-			sourceMap: 'inline'
-		})
-		// parser: require('./lib/babel-parser')
-		, postprocessor: require('./lib/babel-parser').asyncParser
-	})
-	.match('::package', {
-		// 合并es6 polyfill
-		packager: fis.plugin('map', {
-			['pkg/es2015-polyfill_'+(+ new Date())+'.js']: [
-				'es2015-polyfill/**.js'
-			]
-		})
 	})
 
 	.match('**.md', {
