@@ -25,6 +25,8 @@ fis.cli.help.commands = [ 'release', 'install', 'server', 'inspect' ];
 
 require('./config.js');
 
+require('./config/vue-build');
+
 //TODO: 实在找不到地儿放了, 因为是要配置它, 所以就靠它触发吧;
 var deployReg = /^(qa|online)$/i;
 Object.defineProperty(fis.config.data, 'map_file', {

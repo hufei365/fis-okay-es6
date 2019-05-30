@@ -49,6 +49,7 @@
         "fis3-hook-node_modules": "^2.3.1",
         "fis3-parser-babel-7": "../fis3-parser-babel-7",
         "fis3-parser-scss": "*",
+        "fis3-parser-vue-component": "^5.5.1",
         "fis3-postpackager-loader": "^2.0.5",
         "fis3-preprocessor-extlang": "1.1.6",
         "fis3-server-jello": "*",
