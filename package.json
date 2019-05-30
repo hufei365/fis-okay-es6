@@ -1,0 +1,61 @@
+{
+    "name": "okay",
+    "version": "0.1.0",
+    "description": "front-end integrated solution for j2ee velocity.",
+    "keywords": [
+        "okay",
+        "fis"
+    ],
+    "homepage": "http://git.okjiaoyu.cn/front-end/fis-okay",
+    "bugs": {
+        "url": "http://git.okjiaoyu.cn/front-end/fis-okay/issues",
+        "email": "nuersir@gmail.com"
+    },
+    "bin": {
+        "okay": "bin/fis-okay",
+        "fis-okay": "bin/fis-okay"
+    },
+    "scripts": {
+        "dev": "node bin/fis-okay release -c -f ../test/okay-conf.js -r ../test",
+        "dev:release": "node bin/fis-okay release 112 -c -f ../test/okay-conf.js -r ../test",
+        "test-common": "node bin/fis-okay release -c -f ../test-common/okay-conf.js -r ../test-common",
+        "test-common:release": "node bin/fis-okay release 112 -c -f ../test-common/okay-conf.js -r ../test-common",
+        "common": "node bin/fis-okay release -c -f ../common/okay-conf.js -r ../common",
+        "teacher": "node bin/fis-okay release -c -f ../teacher/okay-conf.js -r ../teacher",
+        "okay": "node bin/fis-okay"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "nuer",
+        "email": "nuersir@gmail.com",
+        "url": "https://github.com/nuersir"
+    },
+    "main": "okay.js",
+    "repository": {
+        "type": "git",
+        "url": "git@git.okjiaoyu.cn:front-end/fis-okay.git"
+    },
+    "dependencies": {
+        "@babel/core": "^7.4.4",
+        "@babel/plugin-transform-runtime": "^7.4.4",
+        "@babel/preset-env": "^7.4.4",
+        "@babel/runtime-corejs3": "^7.4.4",
+        "colors": "0.6.2",
+        "fis-parser-handlebars-x": "*",
+        "fis-parser-marked": "*",
+        "fis3": "3.4.41",
+        "fis3-deploy-tar": "*",
+        "fis3-hook-commonjs": "*",
+        "fis3-hook-node_modules": "^2.3.1",
+        "fis3-parser-babel-7": "../fis3-parser-babel-7",
+        "fis3-parser-scss": "*",
+        "fis3-postpackager-loader": "^2.0.5",
+        "fis3-preprocessor-extlang": "1.1.6",
+        "fis3-server-jello": "*",
+        "liftoff": "2.2.0",
+        "minimist": "1.2.0",
+        "node-pngcrush": "v0.3.4",
+        "node-pngquant-native": "v1.0.2"
+    },
+    "engines": ">=4.5.0"
+}
