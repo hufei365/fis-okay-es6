@@ -43,7 +43,7 @@
         "colors": "0.6.2",
         "fis-parser-handlebars-x": "*",
         "fis-parser-marked": "*",
-        "fis3": "3.4.41",
+        "fis3": "https://github.com/fex-team/fis3.git",
         "fis3-deploy-tar": "*",
         "fis3-hook-commonjs": "*",
         "fis3-hook-node_modules": "^2.3.1",

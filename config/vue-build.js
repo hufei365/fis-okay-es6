@@ -29,6 +29,7 @@ fis.match('/**.vue', {
 // 编译vue组件中的sass
 fis.match('*.vue:scss', {
     rExt: 'css',
+    useSprite: true,
     parser: [
         fis.plugin('scss', {
             sourceMap: true,
