@@ -16,7 +16,7 @@
         "fis-okay": "bin/fis-okay"
     },
     "scripts": {
-        "dev": "node bin/fis-okay release -c -f ../test/okay-conf.js -r ../test",
+        "dev": "node bin/fis-okay release -c -f ../test/okay-conf.js -r ../test --verbose",
         "dev:release": "node bin/fis-okay release 112 -c -f ../test/okay-conf.js -r ../test",
         "test-common": "node bin/fis-okay release -c -f ../test-common/okay-conf.js -r ../test-common",
         "test-common:release": "node bin/fis-okay release 112 -c -f ../test-common/okay-conf.js -r ../test-common",

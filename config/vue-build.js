@@ -4,30 +4,13 @@ fis.match('/**.vue', {
     isMod: true,
     rExt: 'js',
     useSameNameRequire: true,
-	isPartial:false,
-    parser: [
-        // (function(c, f){
-        //     f.isJsLike=true;
-        //     f.isPartial = false;
-        //     console.log(11111);
-        //     return c;
-        // })
-        // https://github.com/ccqgithub/fis3-parser-vue-component
-        // ,fis.plugin('vue-component', {
-        //     runtimeOnly: true,
-        //     styleNameJoin: '',
-        //     extractCSS: false,
-        //     cssScopedIdPrefix: '_v-',
-        //     cssScopedHashType: 'sum',
-        //     cssScopedHashLength: 8,
-        //     cssScopedFlag: '__vuec__',
-		// 	isPartial:false,
-        // })
-		// ,fis.plugin('babel-7', {
-        //     sourceMap:'both'
-        // }) // 处理ES6
-    ]
-}, true);
+    isPartial:false,
+    preprocessor: fis.plugin(function(c,f){
+        f.isJsLike=true;
+        f.isPartial = false;
+        return c;
+    })
+});
 // 编译vue组件中的sass
 fis.match('*.vue:scss', {
     rExt: 'css',
