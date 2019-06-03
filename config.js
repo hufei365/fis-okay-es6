@@ -36,12 +36,15 @@ fis
 	})
 	.match('/src/**.js',{
 		isMod: true,
-		parser: fis.plugin('babel-7')
+		parser: fis.plugin('babel-7', {
+            sourceMap:'both'
+        })
 	})
 	
 	.match('/**.html:js', {
 		parser: fis.plugin('babel-7',{
 			async: true
+			,sourceMap:'both'
 		})
 	})
 
