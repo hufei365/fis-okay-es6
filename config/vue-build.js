@@ -5,10 +5,10 @@ fis.match('/**.vue', {
     rExt: 'js',
     useSameNameRequire: true,
     isPartial:false,
-    preprocessor: fis.plugin(function(c,f){
-        f.isJsLike=true;
-        f.isPartial = false;
-        return c;
+    preprocessor: fis.plugin(function(content,file){
+        file.isJsLike = true;
+        file.isPartial = false;
+        return content;
     })
 });
 // 编译vue组件中的sass
