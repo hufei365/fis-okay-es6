@@ -16,10 +16,10 @@
         "fis-okay": "bin/fis-okay"
     },
     "scripts": {
-        "dev": "node bin/fis-okay release -c -f ../test/okay-conf.js -r ../test --verbose",
-        "dev:release": "node bin/fis-okay release 112 -c -f ../test/okay-conf.js -r ../test",
-        "test-common": "node bin/fis-okay release -c -f ../test-common/okay-conf.js -r ../test-common",
-        "test-common:release": "node bin/fis-okay release 112 -c -f ../test-common/okay-conf.js -r ../test-common",
+        "d": "node bin/fis-okay release -c -f ../test/okay-conf.js -r ../test",
+        "d:r": "node bin/fis-okay release 112 -c -f ../test/okay-conf.js -r ../test",
+        "tc": "node bin/fis-okay release -c -f ../test-common/okay-conf.js -r ../test-common",
+        "tc:r": "node bin/fis-okay release 112 -c -f ../test-common/okay-conf.js -r ../test-common",
         "common": "node bin/fis-okay release -c -f ../common/okay-conf.js -r ../common",
         "teacher": "node bin/fis-okay release -c -f ../teacher/okay-conf.js -r ../teacher",
         "okay": "node bin/fis-okay"
@@ -36,19 +36,15 @@
         "url": "git@git.okjiaoyu.cn:front-end/fis-okay.git"
     },
     "dependencies": {
-        "@babel/core": "^7.4.4",
-        "@babel/plugin-transform-runtime": "^7.4.4",
-        "@babel/preset-env": "^7.4.4",
-        "@babel/runtime-corejs3": "^7.4.4",
         "colors": "0.6.2",
         "fis-parser-handlebars-x": "*",
         "fis-parser-marked": "*",
-        "fis3": "https://github.com/fex-team/fis3.git",
+        "fis3": "^3.4.42",
         "fis3-deploy-tar": "*",
         "fis3-hook-commonjs": "*",
         "fis3-hook-node_modules": "^2.3.1",
         "fis3-parser-babel-7": "../fis3-parser-babel-7",
-        "fis3-parser-scss": "*",
+        "fis3-parser-scss": "../fis3-parser-scss",
         "fis3-parser-vue-component": "^5.5.1",
         "fis3-postpackager-loader": "^2.0.5",
         "fis3-preprocessor-extlang": "1.1.6",

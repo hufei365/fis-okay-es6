@@ -34,17 +34,12 @@ fis
 		parser: fis.plugin('marked'),
 		rExt: '.html'
 	})
-	.match('/src/**.js',{
+
+	// es6文件后缀默认为.es6
+	.match('/src/**.es6', {
 		isMod: true,
 		parser: fis.plugin('babel-7', {
-            sourceMap:'both'
-        })
-	})
-	
-	.match('/**.html:js', {
-		parser: fis.plugin('babel-7',{
-			async: true
-			,sourceMap:'both'
+			sourceMap: false,
 		})
 	})
 
@@ -55,18 +50,43 @@ fis
 		release: '/WEB-INF/$0'
 	})
 	.match('/node_modules/(**.js)', {
-		isMod: true,
-		useSameNameRequire: true
-		// moduleId: '@NODE_MODULES-$1'
+		isMod: true
 	})
+
+	// 编译vue组件
+	.match('/**.vue', {
+		// "useCompile" need force specific the property  // https://github.com/fex-team/fis3/commit/eadc96bfe112d5d4cf5eb349e8a2b6e195bcb5c2
+		useCompile: true,
+		isMod: true,
+		rExt: 'js',
+		isPartial: false,
+		preprocessor: fis.plugin(function (content, file) {
+			file.isJsLike = true;
+			file.isPartial = false;
+			return content;
+		})
+	})
+	// 编译vue组件中的sass
+	.match('*.vue:scss', {
+		rExt: 'css',
+		useSprite: true,
+		parser: [
+			fis.plugin('scss', {
+				sourceMap: true,
+			})
+		]
+	})
+
 	.hook('commonjs', {
 		paths: {
 			$: '/components/common/base/base.js'
 		}
 	});
 
+	fis.hook(require('../fis3-hook-npm'));
+
 // online settings;
-fis.util.map([ 'qa', 'online' ], function(index, name) {
+fis.util.map(['qa', 'online'], function (index, name) {
 	fis
 		.media(name)
 		// js, css, scss加md5;
