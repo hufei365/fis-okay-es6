@@ -1,6 +1,6 @@
 {
     "name": "okay",
-    "version": "0.1.0",
+    "version": "1.0.5",
     "description": "front-end integrated solution for j2ee velocity.",
     "keywords": [
         "okay",
@@ -43,8 +43,9 @@
         "fis3-deploy-tar": "*",
         "fis3-hook-commonjs": "*",
         "fis3-hook-node_modules": "^2.3.1",
-        "fis3-parser-babel-7": "../fis3-parser-babel-7",
-        "fis3-parser-scss": "../fis3-parser-scss",
+        "fis3-hook-common-npm": "",
+        "fis3-parser-babel-7.x": "",
+        "fis3-parser-scss": "",
         "fis3-parser-vue-component": "^5.5.1",
         "fis3-postpackager-loader": "^2.0.5",
         "fis3-preprocessor-extlang": "1.1.6",
@@ -54,5 +55,5 @@
         "node-pngcrush": "v0.3.4",
         "node-pngquant-native": "v1.0.2"
     },
-    "engines": ">=4.5.0"
+    "engines": "10.16.0"
 }

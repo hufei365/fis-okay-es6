@@ -83,7 +83,7 @@ fis
 		}
 	});
 
-	fis.hook(require('../fis3-hook-npm'));
+	fis.hook('common-npm');
 
 // online settings;
 fis.util.map(['qa', 'online'], function (index, name) {
