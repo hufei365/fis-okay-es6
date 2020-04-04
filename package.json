@@ -44,7 +44,7 @@
     "fis3-preprocessor-extlang": "1.1.6",
     "fis3-server-jello": "*",
     "liftoff": "2.2.0",
-    "minimist": "1.2.0",
+    "minimist": "1.2.5",
     "node-pngcrush": "v0.3.4",
     "node-pngquant-native": "v1.0.2",
     "resolve": "^1.8.1",
